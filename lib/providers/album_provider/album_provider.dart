@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 import '../../responses/app_responses.dart';
 import '../../api_services/app_api_services.dart';
 
-class AlbumDetailsProvider with ChangeNotifier {
-  ApiResponse<AlbumResponse> _album;
+class AlbumProvider with ChangeNotifier {
+  ApiResponse<List<AlbumResponse>> _listAlbums;
+  ApiResponse<List<AlbumResponse>> get listAlbums=> _listAlbums;
 
-  ApiResponse<AlbumResponse> get album=> _album;
-
-  fetchAlbumDetails() async {
-    _album = ApiResponse.loading('loading... ');
+  getAlbumsList() async {
+    _listAlbums = ApiResponse.loading('loading... ');
     notifyListeners();
     try {
-      AlbumResponse album = await fetchAlbumDetails();
-      _album = ApiResponse.completed(album);
+      List<AlbumResponse> _list = await fetchAlbums();
+      _listAlbums = ApiResponse.completed(_list);
       notifyListeners();
     } catch (e) {
-      _album = ApiResponse.error(e.toString());
+      _listAlbums = ApiResponse.error(e.toString());
       notifyListeners();
     }
   }
-
 }

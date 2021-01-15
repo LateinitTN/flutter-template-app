@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import '../../flavors.dart';
 import 'api_exceptions.dart';
 import '../../constants/app_constants.dart';
 
@@ -14,11 +15,10 @@ class HttpClient {
   Future<dynamic> fetchData(String url, {Map<String, String> params}) async {
     var responseJson;
 
-    var uri = BaseUrlDev + url + ((params != null) ? this.queryParameters(params) : "");
+    var uri = F.baseUrl + url + ((params != null) ? this.queryParameters(params) : "");
     var header = {HttpHeaders.contentTypeHeader: 'application/json'};
     try {
       final response = await http.get(uri, headers: header);
-      print(response.body.toString());
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -39,7 +39,7 @@ class HttpClient {
     var header = {HttpHeaders.contentTypeHeader: 'application/json'};
     try {
       final response =
-          await http.post(BaseUrlDev + url, body: body, headers: header);
+          await http.post(F.baseUrl + url, body: body, headers: header);
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');

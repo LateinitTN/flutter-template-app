@@ -1,13 +1,6 @@
 import 'dart:io';
-
 import 'package:device_info/device_info.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:package_info/package_info.dart';
-
-Future<String> getOneSignalUserID() async {
-  var status = await OneSignal.shared.getPermissionSubscriptionState();
-  return status.subscriptionStatus.userId;
-}
 
 Future<String> getDeviceModel() async {
   String model = "";
