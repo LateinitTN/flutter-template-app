@@ -1,0 +1,1 @@
+export 'album_page/album_page.dart';
