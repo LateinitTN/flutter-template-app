@@ -1,4 +1,4 @@
-name: network_layer
+name: flutter_template_project
 description: A new Flutter project.
 publish_to: 'none'
 version: 1.0.0+1
@@ -17,6 +17,7 @@ dependencies:
   flutter_launcher_icons: ^0.8.1
   device_info: ^1.0.0
   package_info: ^0.4.3+2
+  dio: ^3.0.10
 
 dev_dependencies:
   flutter_test:

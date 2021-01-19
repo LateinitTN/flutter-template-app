@@ -1,13 +1,15 @@
 class BaseResponse {
   int status;
-  String msg;
+  String message;
 
-  BaseResponse({this.status, this.msg});
+  BaseResponse({this.status, this.message});
 
   factory BaseResponse.fromJson(Map<String, dynamic> json) {
     return BaseResponse(
       status: json['status'],
-      msg: json['msg'],
+      message: json['message'],
     );
   }
+
+  BaseResponse.withError(int status, String error): status = status, message = error;
 }

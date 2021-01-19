@@ -7,10 +7,9 @@ import '../../flavors.dart';
 import 'api_exceptions.dart';
 import '../../constants/app_constants.dart';
 
-class HttpClient {
-  static final HttpClient _singleton = HttpClient();
-
-  static HttpClient get instance => _singleton;
+class ApiBaseHelper {
+  static final ApiBaseHelper _singleton = ApiBaseHelper();
+  static ApiBaseHelper get instance => _singleton;
 
   Future<dynamic> fetchData(String url, {Map<String, String> params}) async {
     var responseJson;

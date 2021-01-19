@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/app_providers.dart';
-import '../../api_services/app_api_services.dart';
 import '../../constants/app_constants.dart';
+import '../../api_services/api_module_http/api_modules.dart';
 
 class AlbumPage extends StatefulWidget {
   @override
