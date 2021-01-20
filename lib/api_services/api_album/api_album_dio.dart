@@ -1,5 +1,5 @@
 import '../../responses/app_responses.dart';
-import '../api_module_dio/api_module_dio.dart';
+import '../api_modules/api_module_dio/api_module_dio.dart';
 import '../../constants/app_constants.dart';
 
 Future<List<AlbumResponse>> fetchAlbums() async{

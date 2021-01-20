@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import '../../flavors.dart';
+import '../../../flavors.dart';
 
 
 final BaseOptions options = BaseOptions(

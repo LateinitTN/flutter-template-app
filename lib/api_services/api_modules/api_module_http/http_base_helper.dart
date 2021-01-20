@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:http/http.dart' as http;
-import '../../flavors.dart';
+import '../../../flavors.dart';
 import 'api_exceptions.dart';
-import '../../constants/app_constants.dart';
 
 class ApiBaseHelper {
   static final ApiBaseHelper _singleton = ApiBaseHelper();
@@ -47,24 +44,32 @@ class ApiBaseHelper {
   }
 
   dynamic _returnResponse(http.Response response) {
-    switch (response.statusCode) {
-      case 200:
-        var responseJson = json.decode(response.body.toString());
-        return responseJson;
-      case 400:
-        throw BadRequestException(response.body.toString());
-      case 401:
-        refreshToken();
-        break;
-      case 402:
-        backToMain();
-        break;
-      case 403:
-        throw UnauthorisedException(response.body.toString());
-      case 500:
-      default:
-        throw FetchDataException(
-            'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+    if (response.statusCode == 200)
+    {
+      return response;
+    }
+    else if (response.statusCode == 401)
+    {
+      refreshToken();
+    }
+    else if (response.statusCode == 402)
+    {
+      backToMain();
+    }
+    else if (response.statusCode == 404){
+      throw FetchDataException('${response.statusCode} The server can not find the requested resource.');
+    }
+    else if (response.statusCode == 403)
+    {
+      throw FetchDataException('${response.statusCode} The client does not have access rights to the content.');
+    }
+    else if (response.statusCode == 500)
+    {
+      throw FetchDataException('${response.statusCode} The server has encountered a situation it doesn\'t know how to handle.');
+    }
+    else if (response.statusCode == 503)
+    {
+      throw FetchDataException('${response.statusCode} The server is not ready to handle the request.');
     }
   }
 

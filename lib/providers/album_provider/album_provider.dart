@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../responses/app_responses.dart';
-import '../../api_services/api_module_http/api_modules.dart';
+import '../../api_services/app_api_services.dart';
 // import '../../api_services/api_album/api_album.dart';
 import '../../api_services/api_album/api_album_dio.dart';
 

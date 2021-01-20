@@ -1,6 +1,6 @@
 import '../../responses/app_responses.dart';
 import '../../constants/app_constants.dart';
-import '../api_module_http/api_modules.dart';
+import '../api_modules/api_module_http/api_modules.dart';
 
 Future<List<AlbumResponse>> fetchAlbums() async {
   final response = await ApiBaseHelper.instance.fetchData(getAlbums);
